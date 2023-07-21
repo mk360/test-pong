@@ -21,7 +21,7 @@ class XInput extends InputMethod<XBoxButtons> {
         super("xinput");
     }
 
-    getStickAxes(axes: number[]) {
+    getStickAxes(axes: readonly number[]) {
         return {
             leftStick: {
                 x: axes[0],
