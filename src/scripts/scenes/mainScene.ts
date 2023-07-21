@@ -95,11 +95,12 @@ export default class MainScene extends Phaser.Scene {
       const pad = navigator.getGamepads()[0];
       if (pad) {
         const pressed = this.xInput.getPressedButtons(pad.buttons);
-        if (pressed.includes("DPad-Up")) {
+        const sticks = this.xInput.getStickAxes(pad.axes);
+        if (pressed.includes("DPad-Up") || sticks.leftStick.y < 0) {
           this.playerPaddle.move(-paddleSpeed);
         }
 
-        if (pressed.includes("DPad-Down")) {
+        if (pressed.includes("DPad-Down") || sticks.leftStick.y > 0) {
           this.playerPaddle.move(paddleSpeed);
         }
 
